@@ -20,7 +20,10 @@ environments {
     test {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
+			url = "jdbc:mysql://localhost/Libros"
+          	driverClassName = "com.mysql.jdbc.Driver"
+          	username = "root"
+          	password = "root"
         }
     }
     production {

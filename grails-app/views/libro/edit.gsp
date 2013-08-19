@@ -12,12 +12,12 @@
 		<g:render template="menuSuperior" model="[entityName: entityName]"></g:render>
 		
 		<g:if test="${alta}">
-			<g:set var="titulo" value="Crear un nuevo libro"/>
+			<g:set var="titulo" value="default.create.title"/>
 		</g:if>
 		<g:else>
-			<g:set var="titulo" value="Actualizar libro"/>
+			<g:set var="titulo" value="default.update.title"/>
 		</g:else>
-		<g:render template="titulo" model="['titulo': titulo]"/>
+		<g:render template="titulo" model="['tituloKey': titulo, 'entityName':'Libro']"/>
 		<g:if test="${flash.message}">
 			<div class="message">
 				${flash.message}
@@ -32,27 +32,27 @@
 			<g:hiddenField name="id" value="${libroInstance?.id}" />
 			<g:hiddenField name="version" value="${libroInstance?.version}" />
 			<div class="control-group ${hasErrors(bean: libroInstance, field: 'autor', 'error')}">
-				<label class="control-label" for="autor"><g:message code="libro.autor.label" default="Autor" /> </label>
+				<label class="control-label" for="autor"><g:message code="default.author.label"/> </label>
 				<div class="controls">
-					<input class="input-large" type="text" name="autor" id="autor" placeholder="Autor" value="${libroInstance?.autor}" />
+					<input class="input-large" type="text" name="autor" id="autor" placeholder="${message(code:'default.author.label')}"  value="${libroInstance?.autor}" />
 				</div>
 			</div>
 			<div class="control-group ${hasErrors(bean: libroInstance, field: 'titulo', 'error')}">
-				<label class="control-label" for="titulo"><g:message code="libro.titulo.label" default="Titulo" /> </label>
+				<label class="control-label" for="titulo"><g:message code="default.title.label"/> </label>
 				<div class="controls">
-					<input class="input-xxlarge" type="text" name="titulo" id="titulo" placeholder="Titulo" value="${libroInstance?.titulo}" />
+					<input class="input-xxlarge" type="text" name="titulo" id="titulo" placeholder="${message(code:'default.title.label')}" value="${libroInstance?.titulo}" />
 				</div>
 			</div>
 			<div class="control-group ${hasErrors(bean: libroInstance, field: 'editorial', 'error')}">
-				<label class="control-label" for="editorial"><g:message code="libro.editorial.label" default="Editorial" /> </label>
+				<label class="control-label" for="editorial"><g:message code="default.publisher.label"/> </label>
 				<div class="controls">
-					<input class="input-large" type="text" name="editorial" id="editorial" placeholder="Editorial" value="${libroInstance?.editorial}" />
+					<input class="input-large" type="text" name="editorial" id="editorial" placeholder="${message(code:'default.publisher.label')}" value="${libroInstance?.editorial}" />
 				</div>
 			</div>
 			<div class="control-group ${hasErrors(bean: libroInstance, field: 'anioPublicacion', 'error')}">
-				<label class="control-label" for="editorial"><g:message code="libro.anioPublicacion.label" default="A&ntilde;o de Publicaci&oacute;n" /> </label>
+				<label class="control-label" for="editorial"><g:message code="default.publishYear.label"/> </label>
 				<div class="controls">
-					<input class="input-medium" type="text" name="anioPublicacion" id="anioPublicacion" placeholder="A&ntilde;o de Publicaci&oacute;n" value="${libroInstance?.anioPublicacion}" />
+					<input class="input-medium" type="text" name="anioPublicacion" id="anioPublicacion" placeholder="${message(code:'default.publishYear.label')}" value="${libroInstance?.anioPublicacion}" />
 				</div>
 			</div>
 			<div class="buttons">

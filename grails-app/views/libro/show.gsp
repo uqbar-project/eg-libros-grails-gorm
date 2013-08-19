@@ -9,7 +9,7 @@
 <body>
 	<div class="body" style="width: 90%; padding: 15pt;">
 		<g:render template="menuSuperior" model="[entityName: entityName]"></g:render>
-		<g:render template="titulo" model="['titulo': 'Datos del libro']"/>
+		<g:render template="titulo" model="['tituloKey': 'default.show.title', 'entityName':'Libro']"/>
 		<g:if test="${flash.message}">
 			<div class="message">
 				${flash.message}
@@ -17,26 +17,26 @@
 		</g:if>
 		<g:form class="form-horizontal" method="post">
 			<div class="control-group">
-				<label class="control-label" for="autor"><g:message code="libro.autor.label" default="Autor" />&nbsp;&nbsp; </label> <span class="input-xlarge uneditable-input"> ${libroInstance?.autor} </span>
+				<label class="control-label" for="autor"><g:message code="default.author.label" default="Autor" />&nbsp;&nbsp; </label> <span class="input-xlarge uneditable-input"> ${libroInstance?.autor} </span>
 			</div>
 			<div class="control-group">
-				<label class="control-label" for="titulo"><g:message code="libro.titulo.label" default="Titulo" />&nbsp;&nbsp; </label> <span class="input-xxlarge uneditable-input"> ${libroInstance?.titulo} </span>
+				<label class="control-label" for="titulo"><g:message code="default.title.label" default="Titulo" />&nbsp;&nbsp; </label> <span class="input-xxlarge uneditable-input"> ${libroInstance?.titulo} </span>
 			</div>
 			<div class="control-group">
-				<label class="control-label" for="editorial"><g:message code="libro.editorial.label" default="Editorial" />&nbsp;&nbsp; </label> <span class="input-xlarge uneditable-input"> ${libroInstance?.editorial} </span>
+				<label class="control-label" for="editorial"><g:message code="default.publisher.label" default="Editorial" />&nbsp;&nbsp; </label> <span class="input-xlarge uneditable-input"> ${libroInstance?.editorial} </span>
 			</div>
 			<div class="control-group">
-				<label class="control-label" for="editorial"><g:message code="libro.anioPublicacion.label" default="A&ntilde;o de Publicaci&oacute;n" />&nbsp;&nbsp; </label> <span class="input-large uneditable-input"> ${libroInstance?.anioPublicacion} </span>
+				<label class="control-label" for="editorial"><g:message code="default.publishYear.label" default="A&ntilde;o de Publicaci&oacute;n" />&nbsp;&nbsp; </label> <span class="input-large uneditable-input"> ${libroInstance?.anioPublicacion} </span>
 			</div>
 			<div class="buttons">
 				<g:hiddenField name="id" value="${libroInstance?.id}" />
-				<g:actionSubmit class="btn btn-primary" action="edit" value="Editar"/>
+				<g:actionSubmit class="btn btn-primary" action="edit" value="${message(code:'default.button.edit.label')}"/>
 				<!--  se pueden poner botones con íconos como éste
 				<button class="btn btn-primary" name="_action_edit" value="Editar">
 					<i class="icon-file icon-white"></i>Editar
 				</button>
 				 -->
-				<g:actionSubmit class="btn btn-primary" action="delete" value="Eliminar"/>
+				<g:actionSubmit class="btn btn-primary" action="delete" value="${message(code:'default.button.delete.label')}"/>
 				<g:link class="btn btn-primary" action="list">
 					<g:message code="default.cancel.label" />
 				</g:link>
