@@ -30,7 +30,9 @@
 								<label>Autor:</label> 
 								<input type="text" class="input" name="autor" id="autor" placeholder="Contiene..." value="${libroBusqueda?.autor}">
 								<br />
-								<button type="submit" class="btn btn-primary">Buscar</button>
+								<button type="submit" class="btn btn-primary">
+									<g:message code="default.list.label"/>
+								</button>
 							</fieldset>
 						</form>
 					</div>
