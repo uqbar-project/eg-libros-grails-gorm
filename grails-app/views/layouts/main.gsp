@@ -2,12 +2,14 @@
 <html>
 <head>
 	<title>B&uacute;squeda de libros</title>
-	<link href="${resource(dir:'css',file:'bootstrap.min.css')}" rel="stylesheet" media="screen">
-	<link href="${resource(dir:'css',file:'bootstrap-responsive.css')}" rel="stylesheet" media="screen">
+<%--	<link href="${resource(dir:'css',file:'bootstrap.min.css')}" rel="stylesheet" media="screen">--%>
+<%--	<link href="${resource(dir:'css',file:'bootstrap-responsive.css')}" rel="stylesheet" media="screen">--%>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script src="http://code.jquery.com/jquery.js"></script>
-	<g:javascript library="bootstrap.min" />
-	<g:javascript library="application" />
+<%--	<script src="http://code.jquery.com/jquery.js"></script>--%>
+<%--	<g:javascript library="bootstrap.min" />--%>
+<%--	<g:javascript library="application" />--%>
+	<r:require module="bootstrap"/>
+	<r:layoutResources/>
 </head>
 <body>
 	<div id="spinner" class="spinner" style="display: none;">
@@ -15,5 +17,6 @@
 			alt="${message(code:'spinner.alt',default:'Loading...')}" />
 	</div>
 	<g:layoutBody />
+	<r:layoutResources/>
 </body>
 </html>

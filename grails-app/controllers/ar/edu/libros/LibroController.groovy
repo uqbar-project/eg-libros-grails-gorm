@@ -27,10 +27,11 @@ class LibroController {
 	}
 
 	def save() {
-		def libroInstance = null
-		def defaultMessage = null
-		def id = params.id
-		def version = params.version
+		Libro libroInstance = null
+		String defaultMessage = null
+		Long id = params.id
+		boolean alta = id != null
+		int version = params.version
 		if (id) {
 			libroInstance = libroService.getLibro(id)
 			defaultMessage = "default.updated.message"
@@ -41,28 +42,26 @@ class LibroController {
 		try {
 			chequearVersion(version, libroInstance)
 			libroInstance.properties = params
-			libroInstance.validar()
-			if (libroService.actualizarLibro(libroInstance)) {
-				flash.message = flash.message = message(code: defaultMessage, args: [message(code: 'libro.label', default: 'Libro'), libroInstance.id])
-				redirect(action: "list")
-			} else {
-				render(view: "edit", model: [libroInstance: libroInstance])
-			}
+			libroService.actualizarLibro(libroInstance)
+			flash.message = message(code: defaultMessage, args: [
+				message(code: 'libro.label', default: 'Libro'),
+				libroInstance.id
+			])
+			redirect(action: "list")
 		} catch (UpdateException e) {
 			flash.message = "${message(code: 'default.updated.message', args: [message(code: 'libro.label', default: 'Libro'), libroInstance.id])}"
 			redirect(action: "show", id: libroInstance.id)
 		} catch (ConcurrentModificationException e) {
-			render(view: "edit", model: [libroInstance: libroInstance, alta: false])
+			render(view: "edit", model: [libroInstance: libroInstance, alta: alta])
+		} catch (RuntimeException e) {
+			render(view: "edit", model: [libroInstance: libroInstance, alta: alta])
 		}
 	}
 
 	def show(Long id) {
 		def libroInstance = libroService.getLibro(id)
 		if (!libroInstance) {
-			flash.message = message(code: 'default.not.found.message', args: [
-				message(code: 'libro.label', default: 'Libro'),
-				id
-			])
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'libro.label', default: 'Libro'), id])
 			redirect(action: "list")
 		}
 		else {
@@ -116,7 +115,8 @@ class LibroController {
 		if (pVersion) {
 			def version = pVersion.toLong()
 			if (domainObject.version > version) {
-				domainObject.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'libro.label', default: 'Libro')] as Object[], "Another user has updated this Libro while you were editing")
+				domainObject.errors.rejectValue("version", "default.optimistic.locking.failure", [
+					message(code: 'libro.label', default: 'Libro')] as Object[], "Another user has updated this Libro while you were editing")
 				throw new ConcurrentModificationException()
 			}
 		}
