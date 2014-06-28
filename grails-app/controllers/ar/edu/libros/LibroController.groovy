@@ -27,12 +27,11 @@ class LibroController {
 	}
 
 	def save() {
-		Libro libroInstance = null
-		String defaultMessage = null
-		Long id = params.id
-		boolean alta = id == null
-		int version = params.version
-		println "Alta: " + alta + " id: " + id
+		def libroInstance = null
+		def defaultMessage = null
+		def id = params.id
+		def alta = id?.equals("")
+		def version = params.version
 		if (alta) {
 			libroInstance = new Libro()
 			defaultMessage = "default.created.message"
@@ -41,11 +40,9 @@ class LibroController {
 			defaultMessage = "default.updated.message"
 		}
 		try {
-			println "Oia!" + libroInstance
 			chequearVersion(version, libroInstance)
 			libroInstance.properties = params
 			libroService.actualizarLibro(libroInstance)
-			println "Todo ok"
 			flash.message = message(code: defaultMessage, args: [message(code: 'libro.label', default: 'Libro'), libroInstance.id])
 			redirect(action: "list")
 		} catch (UpdateException e) {
@@ -54,7 +51,6 @@ class LibroController {
 		} catch (ConcurrentModificationException e) {
 			render(view: "edit", model: [libroInstance: libroInstance, alta: alta])
 		} catch (RuntimeException e) {
-			println e.message
 			render(view: "edit", model: [libroInstance: libroInstance, alta: alta])
 		}
 	}
