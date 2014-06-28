@@ -30,13 +30,13 @@
 			</div>
 			<div class="buttons">
 				<g:hiddenField name="id" value="${libroInstance?.id}" />
-				<g:actionSubmit class="btn btn-primary" action="edit" id="${libroInstance?.id}" value="${message(code:'default.edit.label')}"/>
+				<g:actionSubmit class="btn btn-primary" action="edit" id="${libroInstance?.id}" value="${message(code:'default.edit.label', args: [entityName])}"/>
 				<!--  se pueden poner botones con íconos como éste
 				<button class="btn btn-primary" name="_action_edit" value="Editar">
 					<i class="icon-file icon-white"></i>Editar
 				</button>
 				 -->
-				<g:actionSubmit class="btn btn-primary" action="delete" id="${libroInstance?.id}" value="${message(code:'default.delete.label')}"/>
+				<g:actionSubmit class="btn btn-primary" action="delete" id="${libroInstance?.id}" value="${message(code:'default.delete.label', args: [entityName])}"/>
 				<g:link class="btn btn-primary" action="list">
 					<g:message code="default.cancel.label" />
 				</g:link>
