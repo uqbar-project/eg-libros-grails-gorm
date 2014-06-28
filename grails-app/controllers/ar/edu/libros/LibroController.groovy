@@ -30,23 +30,23 @@ class LibroController {
 		Libro libroInstance = null
 		String defaultMessage = null
 		Long id = params.id
-		boolean alta = id != null
+		boolean alta = id == null
 		int version = params.version
-		if (id) {
-			libroInstance = libroService.getLibro(id)
-			defaultMessage = "default.updated.message"
-		} else {
+		println "Alta: " + alta + " id: " + id
+		if (alta) {
 			libroInstance = new Libro()
 			defaultMessage = "default.created.message"
+		} else {
+			libroInstance = libroService.getLibro(id)
+			defaultMessage = "default.updated.message"
 		}
 		try {
+			println "Oia!" + libroInstance
 			chequearVersion(version, libroInstance)
 			libroInstance.properties = params
 			libroService.actualizarLibro(libroInstance)
-			flash.message = message(code: defaultMessage, args: [
-				message(code: 'libro.label', default: 'Libro'),
-				libroInstance.id
-			])
+			println "Todo ok"
+			flash.message = message(code: defaultMessage, args: [message(code: 'libro.label', default: 'Libro'), libroInstance.id])
 			redirect(action: "list")
 		} catch (UpdateException e) {
 			flash.message = "${message(code: 'default.updated.message', args: [message(code: 'libro.label', default: 'Libro'), libroInstance.id])}"
@@ -54,6 +54,7 @@ class LibroController {
 		} catch (ConcurrentModificationException e) {
 			render(view: "edit", model: [libroInstance: libroInstance, alta: alta])
 		} catch (RuntimeException e) {
+			println e.message
 			render(view: "edit", model: [libroInstance: libroInstance, alta: alta])
 		}
 	}

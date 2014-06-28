@@ -28,7 +28,7 @@
 				<g:renderErrors bean="${libroInstance}" as="list" />
 			</div>
 		</g:hasErrors>
-		<form class="form-horizontal" action="save" method="post">
+		<form class="form-horizontal" method="post">
 			<g:hiddenField name="id" value="${libroInstance?.id}" />
 			<g:hiddenField name="version" value="${libroInstance?.version}" />
 			<div class="control-group ${hasErrors(bean: libroInstance, field: 'autor', 'error')}">
@@ -56,7 +56,7 @@
 				</div>
 			</div>
 			<div class="buttons">
-				<input type="submit" class="btn btn-primary" value="<g:message code="default.add.label" args="[entityName]" />" />
+				<g:actionSubmit class="btn btn-primary" action="save" value="${message(code:'default.add.label', args=entityName)}" />
 				<g:link class="btn btn-primary" action="list">
 					<g:message code="default.cancel.label" />
 				</g:link>
