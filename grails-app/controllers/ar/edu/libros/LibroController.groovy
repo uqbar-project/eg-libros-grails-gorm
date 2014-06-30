@@ -7,7 +7,7 @@ import ar.edu.libros.exceptions.UpdateException
 
 class LibroController {
 
-	def LibroService
+	def libroService
 
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -56,6 +56,14 @@ class LibroController {
 	}
 
 	def show(Long id) {
+		getLibro(id)
+	}
+
+	def edit(Long id) {
+		getLibro(id)
+	}
+	
+	def getLibro(Long id) {
 		def libroInstance = libroService.getLibro(id)
 		if (!libroInstance) {
 			flash.message = message(code: 'default.not.found.message', args: [message(code: 'libro.label', default: 'Libro'), id])
@@ -66,27 +74,10 @@ class LibroController {
 		}
 	}
 
-	def edit(Long id) {
-		def libroInstance = libroService.getLibro(id)
-		if (!libroInstance) {
-			flash.message = message(code: 'default.not.found.message', args: [
-				message(code: 'libro.label', default: 'Libro'),
-				id
-			])
-			redirect(action: "list")
-		}
-		else {
-			[libroInstance: libroInstance]
-		}
-	}
-
 	def delete(Long id) {
 		def libroInstance = Libro.get(id)
 		if (!libroInstance) {
-			flash.message = message(code: 'default.not.found.message', args: [
-				message(code: 'libro.label', default: 'Libro'),
-				id
-			])
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'libro.label', default: 'Libro'),id])
 			redirect(action: "list")
 			return
 		}

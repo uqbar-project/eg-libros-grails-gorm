@@ -28,19 +28,19 @@ class Libro {
 	
 	def validar() {
 		if (!autor) {
-			this.errors.rejectValue "autor", "Debe completar el autor"
+			this.errors.rejectValue "autor", 'default.blank.message', ['autor'] as Object[], ''
 		}
 		if (!titulo) {
-			this.errors.rejectValue "titulo", "Debe completar el título"
+			this.errors.rejectValue "titulo", 'default.blank.message', ['titulo'] as Object[], ''
 		}
 		if (!editorial) {
-			this.errors.rejectValue "editorial", "Debe completar la editorial"
+			this.errors.rejectValue "editorial", 'default.blank.message', ['editorial'] as Object[], ''
 		}
 		if (!anioPublicacion) {
-			this.errors.rejectValue "anioPublicacion", "Debe completar el año de publicación"
+			this.errors.rejectValue "anioPublicacion", 'default.blank.message', ['anioPublicacion'] as Object[], ''
 		}
 		if (anioPublicacion && anioPublicacion > new Date().getAt(Calendar.YEAR)) {
-			this.errors.rejectValue "anioPublicacion", "El año de publicación no puede ser posterior al año actual" 
+			this.errors.rejectValue 'anioPublicacion', 'validation.less.currentYear', ['anioPublicacion'] as Object[], '' 
 		}
 	}
 }
