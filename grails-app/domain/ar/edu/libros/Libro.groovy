@@ -17,9 +17,9 @@ class Libro {
     }
 	
 	public Libro() {
-		autor = ""
-		titulo = ""
-		editorial = ""
+		autor = ''
+		titulo = ''
+		editorial = ''
 	}
 	
 	public String toString() {
@@ -28,16 +28,16 @@ class Libro {
 	
 	def validar() {
 		if (!autor) {
-			this.errors.rejectValue "autor", 'default.blank.message', ['autor'] as Object[], ''
+			this.errors.rejectValue 'autor', 'default.blank.message', ['autor'] as Object[], ''
 		}
 		if (!titulo) {
-			this.errors.rejectValue "titulo", 'default.blank.message', ['titulo'] as Object[], ''
+			this.errors.rejectValue 'titulo', 'default.blank.message', ['titulo'] as Object[], ''
 		}
 		if (!editorial) {
-			this.errors.rejectValue "editorial", 'default.blank.message', ['editorial'] as Object[], ''
+			this.errors.rejectValue 'editorial', 'default.blank.message', ['editorial'] as Object[], ''
 		}
 		if (!anioPublicacion) {
-			this.errors.rejectValue "anioPublicacion", 'default.blank.message', ['anioPublicacion'] as Object[], ''
+			this.errors.rejectValue 'anioPublicacion', 'default.blank.message', ['anioPublicacion'] as Object[], ''
 		}
 		if (anioPublicacion && anioPublicacion > new Date().getAt(Calendar.YEAR)) {
 			this.errors.rejectValue 'anioPublicacion', 'validation.less.currentYear', ['anioPublicacion'] as Object[], '' 
