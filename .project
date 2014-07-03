@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>libros-ui-grails</name>
+	<name>libros-ui-grails-orm-basic</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -26,7 +26,7 @@
 		<link>
 			<name>.link_to_grails_plugins</name>
 			<type>2</type>
-			<location>C:/Workspaces/ui-2014-64-grails/libros-basic-ui-grails/target/work/plugins</location>
+			<location>C:/Workspaces/ui-2014-64-grails/libros-ui-grails-orm-basic/target/work/plugins</location>
 		</link>
 	</linkedResources>
 </projectDescription>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>B&uacute;squeda de clientes</title>
+	<title>B&uacute;squeda de libros</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<r:require modules="jquery, bootstrap"/>
 	<r:layoutResources/>
@@ -9,8 +9,7 @@
 </head>
 <body>
 	<div id="spinner" class="spinner" style="display: none;">
-		<img src="${resource(dir:'images',file:'spinner.gif')}"
-			alt="${message(code:'spinner.alt',default:'Loading...')}" />
+		<img src="${resource(dir:'images',file:'spinner.gif')}"	alt="Loading..." />
 	</div>
 	<r:layoutResources/>
 	<g:layoutBody />
