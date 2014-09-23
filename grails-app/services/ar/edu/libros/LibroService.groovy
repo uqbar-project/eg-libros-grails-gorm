@@ -10,8 +10,12 @@ class LibroService {
 	@Transactional(readOnly = true)
 	def getLibros(params, Libro libro) {
 		def queryLibros = Libro.createCriteria().list(params) {
-			ilike("titulo", "%" + libro.titulo + "%")
-			ilike("autor", "%" + libro.autor + "%")
+			if (libro.titulo) {
+				ilike("titulo", "%" + libro.titulo + "%")
+			}
+			if (libro.autor) {
+				ilike("autor", "%" + libro.autor + "%")
+			}
 		}
 		// Seteamos el totalCount para paginar los resultados en la grilla
 		params.libroInstanceTotal = queryLibros.totalCount
