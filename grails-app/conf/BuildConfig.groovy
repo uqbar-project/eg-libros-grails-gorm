@@ -12,6 +12,7 @@ grails.project.source.level = 1.6
 //   run: [maxMemory:1024, minMemory:64, debug:false, maxPerm:256]
 //]
 
+grails.project.dependency.resolver = "maven" // or ivy
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
     inherits("global") {
@@ -46,18 +47,18 @@ grails.project.dependency.resolution = {
     }
 
     plugins {
-		build ":tomcat:7.0.52.1"
+		build ":tomcat:7.0.54"
 
 		// plugins for the compile step
-		compile ":scaffolding:2.0.3"
-		compile ":cache:1.1.2"
+		compile ":scaffolding:2.1.2"
+		compile ':cache:1.1.7'
+		compile ":asset-pipeline:1.8.11"
 		compile ":mysql-connectorj:5.1.22.1"
-		compile ":twitter-bootstrap:2.3.2"
+		compile ":twitter-bootstrap:3.2.0"
 
 		// plugins needed at runtime but not for compilation
-		runtime ":hibernate:3.6.10.13" // or ":hibernate4:4.3.5.1"
+		runtime ":hibernate4:4.3.5.4" // or ":hibernate:3.6.10.16"
 		runtime ":database-migration:1.4.0"
-		runtime ":jquery:1.11.0.2"
-		runtime ":resources:1.2.7"
+		runtime ":jquery:1.11.1"
     }
 }
