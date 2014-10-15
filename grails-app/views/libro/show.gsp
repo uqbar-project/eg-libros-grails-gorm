@@ -17,19 +17,19 @@
 			<div class="row">
 				<div class="col-md-6">
 					<label class="control-label" for="autor">Autor&nbsp;&nbsp; </label> 
-					<input class="readOnly form-control" type="text" value="${libroInstance?.autor}"/>
+					<input class="readonly form-control" type="text" value="${libroInstance?.autor}" disabled="disabled"/>
 				</div>
 				<div class="col-md-6">
 					<label class="control-label" for="titulo">T&iacute;tulo&nbsp;&nbsp; </label>
-					<input class="readOnly form-control" type="text" value="${libroInstance?.titulo}"/>
+					<input class="readonly form-control" type="text" value="${libroInstance?.titulo}" disabled="disabled"/>
 				</div>
 				<div class="col-md-6">	
 					<label class="control-label" for="editorial">Editorial&nbsp;&nbsp; </label> 
-					<input class="readOnly form-control" type="text" value="${libroInstance?.editorial}"/>
+					<input class="readonly form-control" type="text" value="${libroInstance?.editorial}" disabled="disabled"/>
 				</div>
 				<div class="col-md-6">
 					<label class="control-label" for="editorial">A&ntilde;o de Publicaci&oacute;n&nbsp;&nbsp; </label>
-					<input class="readOnly form-control" type="text" value="${libroInstance?.anioPublicacion}"/> 
+					<input class="readonly form-control" type="text" value="${libroInstance?.anioPublicacion}" disabled="disabled"/> 
 				</div>
 			</div>
 			<div class="buttons">

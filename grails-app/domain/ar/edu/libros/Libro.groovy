@@ -4,6 +4,8 @@ import java.util.Date
 
 class Libro {
 
+	static int MINIMO_ANIO_PUBLICACION = 1500
+	
 	String autor
 	String titulo
 	String editorial
@@ -39,8 +41,11 @@ class Libro {
 		if (!anioPublicacion) {
 			this.errors.reject 'anioPublicacion', 'Debe ingresar año de publicación'
 		}
+		if (anioPublicacion && anioPublicacion < MINIMO_ANIO_PUBLICACION) {
+			this.errors.reject 'anioPublicacion', 'El año de publicación debe ser superior a ' + MINIMO_ANIO_PUBLICACION
+		}
 		if (anioPublicacion && anioPublicacion > new Date().getAt(Calendar.YEAR)) {
-			this.errors.reject 'anioPublicacion', 'El año de publicación no puede ser inferior al año actual' 
+			this.errors.reject 'anioPublicacion', 'El año de publicación no puede ser superior al año actual' 
 		}
 	}
 }

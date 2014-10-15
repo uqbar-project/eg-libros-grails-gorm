@@ -20,11 +20,11 @@
 				${flash.message}
 			</div>
 		</g:if>
-		<g:if test="${exception}">
+		<g:hasErrors bean="${libroInstance}">
 			<div class="alert alert-danger">
-				${exception.message}
+				<g:renderErrors bean="${libroInstance}" as="list" />
 			</div>
-		</g:if>
+		</g:hasErrors>
 		<form class="form-horizontal" action="save" method="post">
 			<g:hiddenField name="id" value="${libroInstance?.id}" />
 			<div class="row">
