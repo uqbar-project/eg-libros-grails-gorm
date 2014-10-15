@@ -2,7 +2,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="layout" content="main" />
-<title>Busqueda de libros</title>
+<title>Búsqueda de libros</title>
 </head>
 <body>
 	<div class="body" style="width: 90%; padding: 15pt;">
