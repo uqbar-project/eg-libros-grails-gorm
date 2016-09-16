@@ -2,6 +2,9 @@
 # Actualización de Libros en Grails
 
 <img src="https://cloud.githubusercontent.com/assets/4549002/18517870/40a22aee-7a74-11e6-99e0-211e44d7bacf.png" width="100px;" height="100px;"/>
+<br/>
+<img src="https://github.com/uqbar-project/eg-libros-ui-grails/blob/master/video/demo.gif" width="80%" height="80%"/>
+
 
 ## Explicación
 
